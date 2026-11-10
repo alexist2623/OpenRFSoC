@@ -1,0 +1,15 @@
+* SPDX-License-Identifier: MIT
+* Candidate: physical CMOS inverters drive the switch gates from VLOW to VDD.
+* NMOS driver body/source at VLOW requires isolated p-wells in a future layout.
+* VLOW is an ideal sink-capable rail in this testbench; its regulator is absent.
+.subckt dac_cs_cell_driver outp outn gp gn vbias vcas vdd vlow vss params: WGT=1
+* Invert the opposite logic input to preserve code polarity.
+Xdpn gatep gn vlow vlow sky130_fd_pr__nfet_01v8_lvt w=2 l=0.15 nf=1 mult={WGT} m={WGT} ad=0.58 as=0.58 pd=4.58 ps=4.58
+Xdpp gatep gn vdd vdd sky130_fd_pr__pfet_01v8 w=0.42 l=0.15 nf=1 mult={WGT} m={WGT} ad=0.1218 as=0.1218 pd=1.42 ps=1.42
+Xdnn gaten gp vlow vlow sky130_fd_pr__nfet_01v8_lvt w=2 l=0.15 nf=1 mult={WGT} m={WGT} ad=0.58 as=0.58 pd=4.58 ps=4.58
+Xdnp gaten gp vdd vdd sky130_fd_pr__pfet_01v8 w=0.42 l=0.15 nf=1 mult={WGT} m={WGT} ad=0.1218 as=0.1218 pd=1.42 ps=1.42
+Xtail tail vbias vss vss sky130_fd_pr__nfet_01v8 w=1 l=1 nf=1 mult={WGT} m={WGT} ad=0.29 as=0.29 pd=2.58 ps=2.58
+Xcas common vcas tail vss sky130_fd_pr__nfet_01v8 w=1 l=0.3 nf=1 mult={WGT} m={WGT} ad=0.29 as=0.29 pd=2.58 ps=2.58
+Xsp outp gatep common vss sky130_fd_pr__nfet_01v8 w=0.42 l=0.15 nf=1 mult={WGT} m={WGT} ad=0.1218 as=0.1218 pd=1.42 ps=1.42
+Xsn outn gaten common vss sky130_fd_pr__nfet_01v8 w=0.42 l=0.15 nf=1 mult={WGT} m={WGT} ad=0.1218 as=0.1218 pd=1.42 ps=1.42
+.ends dac_cs_cell_driver

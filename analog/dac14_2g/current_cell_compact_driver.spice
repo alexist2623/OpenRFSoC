@@ -1,0 +1,12 @@
+* SPDX-License-Identifier: MIT
+* Physical reduced-swing drivers with isolated NMOS bodies at the VLOW rail.
+* VLOW regulation and logic-input distribution are still testbench assumptions.
+* Include current_cell_compact.spice alongside this file.
+.subckt dac_cs_cell_compact_driver outp outn gp gn vbias vcas vdd vlow vss params: WGT=1 SWDIV=16
+.param SWM={max(1,WGT/SWDIV)}
+Xdpn gatep gn vlow vlow sky130_fd_pr__nfet_01v8_lvt w=2 l=0.15 nf=1 mult={SWM} m={SWM} ad=0.58 as=0.58 pd=4.58 ps=4.58
+Xdpp gatep gn vdd vdd sky130_fd_pr__pfet_01v8 w=0.42 l=0.15 nf=1 mult={SWM} m={SWM} ad=0.1218 as=0.1218 pd=1.42 ps=1.42
+Xdnn gaten gp vlow vlow sky130_fd_pr__nfet_01v8_lvt w=2 l=0.15 nf=1 mult={SWM} m={SWM} ad=0.58 as=0.58 pd=4.58 ps=4.58
+Xdnp gaten gp vdd vdd sky130_fd_pr__pfet_01v8 w=0.42 l=0.15 nf=1 mult={SWM} m={SWM} ad=0.1218 as=0.1218 pd=1.42 ps=1.42
+Xcore outp outn gatep gaten vbias vcas vss dac_cs_cell_compact WGT={WGT} SWDIV={SWDIV}
+.ends dac_cs_cell_compact_driver

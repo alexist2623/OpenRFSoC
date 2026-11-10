@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "ubuntu": "24.04 LTS",
+  "wsl_installed_version": "2.7.14.0",
+  "librelane": {
+    "repository": "https://github.com/librelane/librelane",
+    "tag": "3.0.9",
+    "commit": "4eccba312aff517e52cd9068bf86623a868e27c1",
+    "dependencies": "Pinned by this upstream revision's flake.lock"
+  },
+  "digital_smoke_pdk": "sky130A",
+  "digital_smoke_pdk_revision": "8afc8346a57fe1ab7934ba5a6056ea8b43078e71",
+  "pdk_revision_policy": "Use the pdk_hashes.yaml shipped with the pinned LibreLane revision, downloaded by Ciel",
+  "fabrication_process": "undecided",
+  "origin": "https://github.com/alexist2623/OpenRFSoC.git"
+}

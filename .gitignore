@@ -1,0 +1,18 @@
+# Local tools, PDKs, caches and generated outputs
+.venv/
+.local/
+build/
+runs/
+pdks/
+tools/
+__pycache__/
+.pytest_cache/
+*.pyc
+*.vcd
+*.fst
+*.raw
+*.log
+results.xml
+sim_build/
+bsim4v5.out
+.DS_Store

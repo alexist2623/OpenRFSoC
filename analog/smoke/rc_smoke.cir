@@ -1,0 +1,7 @@
+OpenRFSoC ngspice smoke test - ideal RC, no foundry devices
+Vstep in 0 PULSE(0 1 0 1n 1n 10u 20u)
+R1 in out 1k
+C1 out 0 1n
+.tran 10n 5u
+.measure tran vout_1us FIND v(out) AT=1u
+.end

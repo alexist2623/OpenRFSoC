@@ -1,0 +1,10 @@
+{
+  "cell_variant": "shared",
+  "switch_divisor": 192,
+  "cascode_bias_v": 0.9,
+  "control_low_v": 0.0,
+  "control_high_v": 1.8,
+  "max_spice_timestep_s": 2.5e-12,
+  "simulation_threads": 2,
+  "status": "Revision v1: physically sized shared steering switches, unchanged current-source matching area; ideal logic inputs and bias, pre-layout."
+}

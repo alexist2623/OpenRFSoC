@@ -1,0 +1,10 @@
+* SPDX-License-Identifier: MIT
+* Separate current-source matching area from the steering-switch width.
+* Tail and cascode retain WGT units; switches use max(1,WGT/SWDIV) min-width units.
+.subckt dac_cs_cell_compact outp outn gp gn vbias vcas vss params: WGT=1 SWDIV=16
+.param SWM={max(1,WGT/SWDIV)}
+Xtail tail vbias vss vss sky130_fd_pr__nfet_01v8 w=1 l=1 nf=1 mult={WGT} m={WGT} ad=0.29 as=0.29 pd=2.58 ps=2.58
+Xcas common vcas tail vss sky130_fd_pr__nfet_01v8 w=1 l=0.3 nf=1 mult={WGT} m={WGT} ad=0.29 as=0.29 pd=2.58 ps=2.58
+Xsp outp gp common vss sky130_fd_pr__nfet_01v8 w=0.42 l=0.15 nf=1 mult={SWM} m={SWM} ad=0.1218 as=0.1218 pd=1.42 ps=1.42
+Xsn outn gn common vss sky130_fd_pr__nfet_01v8 w=0.42 l=0.15 nf=1 mult={SWM} m={SWM} ad=0.1218 as=0.1218 pd=1.42 ps=1.42
+.ends dac_cs_cell_compact
